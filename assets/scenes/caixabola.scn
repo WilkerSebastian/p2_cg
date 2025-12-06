@@ -1,0 +1,107 @@
+material "Default"
+{
+  ambient rgb(0.2,0.2,0.2)
+  diffuse rgb(0.8,0.8,0.8)
+  spot rgb(1,1,1)
+  shine 100
+  specular rgb(1,1,1)
+  transparency rgb(0.270588,0.247059,0.329412)
+  ior 1
+}
+material "Glass"
+{
+  ambient rgb(0.1,0.1,0.1)
+  diffuse rgb(1,0,0)
+  spot rgb(0.713726,0.772549,0.74902)
+  shine 24
+  specular rgb(1,1,1)
+  transparency rgb(0.00392157,0.00392157,0.00392157)
+  ior 1.33
+}
+material "Ground"
+{
+  ambient rgb(0,0,0)
+  diffuse rgb(0.6,0.6,0.6)
+  spot rgb(0,0,0)
+  shine 10
+  specular rgb(0.2,0.2,0.2)
+  transparency rgb(0,0,0)
+  ior 1
+}
+scene "Transparency Basic"
+{
+  environment
+  {
+    ambient rgb(0.2,0.2,0.2)
+    background rgb(0.341772,0.331678,0.331678)
+  }
+  object "Main Camera"
+  {
+    transform
+    {
+      position <0,0,30>
+      rotation <1,1,1>
+    }
+    camera
+    {
+      perspective
+      angle 50
+      aspect 1.77778
+      depth vec2(0.01,1000)
+    }
+  }
+  object "GlassSphere"
+  {
+    transform
+    {
+      position <0,1,0>
+    }
+    mesh "Sphere" material "Glass"
+  }
+  object "GroundPlane"
+  {
+    transform
+    {
+      position <0,0,-6>
+      rotation <90,0,0>
+      scale <8,1,8>
+    }
+    mesh "Plane" material "Ground"
+  }
+  object "KeyLight"
+  {
+    transform
+    {
+      position <2,4,3>
+    }
+    light
+    {
+      point
+      range 0
+      falloff 0
+      color rgb(1,1,1)
+    }
+  }
+  object "dentro da bola"
+  {
+    transform
+    {
+      position <0,1,0>
+    }
+    light
+    {
+      point
+      range 0
+      falloff 0
+      color rgb(1,1,1)
+    }
+  }
+  object "caixa transparente"
+  {
+    transform
+    {
+      scale <3,3,3>
+    }
+    mesh "Box" material "Default"
+  }
+}
